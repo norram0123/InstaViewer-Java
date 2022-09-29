@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SearchFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/mainLinear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="@string/search_hint" />
+
+                <Button
+                    android:id="@+id/searchButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/search_button_margin"
+                    android:layout_marginEnd="@dimen/search_button_margin"
+                    android:insetBottom="0dp"
+                    android:text="@string/search_button"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Bit.MaterialCardView.Rounded" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profileConstraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/searchCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/search_profile_mp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/iconImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/icon_image_description" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/usernameText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/search_profile_mp"
+                        android:textSize="@dimen/search_name_text_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/favoriteImageView"
+                        app:layout_constraintStart_toEndOf="@+id/searchCard"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/favoriteImageView"
+                        android:layout_width="@dimen/search_favorite_image_hw"
+                        android:layout_height="@dimen/search_favorite_image_hw"
+                        android:layout_marginEnd="@dimen/search_profile_mp"
+                        android:layout_marginBottom="@dimen/search_profile_mp"
+                        android:contentDescription="@string/image_favorite_description"
+                        android:src="@drawable/ic_baseline_favorite_border_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <Button
+                        android:id="@+id/addButton"
+                        android:layout_width="@dimen/search_add_hw"
+                        android:layout_height="@dimen/search_add_hw"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/search_add_margin"
+                        android:background="@drawable/button_round"
+                        android:padding="0dp"
+                        android:text="@string/add_button"
+                        android:textSize="@dimen/search_add_text_size"
+                        android:visibility="invisible" />
+                </FrameLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

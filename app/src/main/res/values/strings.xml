@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Bit</string>
+    <string name="mode_description">Choose mode</string>
+    <string name="search_hint">Enter username or profile url</string>
+    <string name="search_button">Search</string>
+    <string name="history_title">History</string>
+    <string name="icon_image_description">Icon image</string>
+    <string name="image_favorite_description">Favorite</string>
+    <string name="add_button">+</string>
+    <string name="image_item_description">Item image</string>
+    <string name="expand_button_description">Expand</string>
+    <string name="expand_all_button_description">Expand all album</string>
+    <string name="post_button">View post</string>
+    <string name="browse_button">In browser</string>
+
+    <string name="error0">You are not connected to the Internet.</string>
+    <string name="error1">The user name does not exist or not belong to a pro account.</string>
+    <string name="dialog_delete_history">Are you sure you want to delete the history?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+</resources>

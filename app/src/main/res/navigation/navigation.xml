@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/modeFragment">
+
+    <fragment
+        android:id="@+id/modeFragment"
+        android:name="com.norram.bit.ModeFragment"
+        tools:layout="@layout/fragment_mode" >
+        <action
+            android:id="@+id/action_modeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.norram.bit.SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <argument
+            android:name="username"
+            app:argType="string" />
+    </fragment>
+</navigation>

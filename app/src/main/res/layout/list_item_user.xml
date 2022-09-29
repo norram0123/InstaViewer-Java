@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemUserLinear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/user_item_margin"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/itemUserCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/itemUserImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/icon_image_description"
+                android:focusableInTouchMode="false" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/itemFavoriteImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:contentDescription="@string/image_favorite_description"
+            android:elevation="@dimen/favorite_elv"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_baseline_favorite_pink_24"
+            app:tint="?attr/colorPrimary" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/itemUserText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_item_text"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/user_text_padding"
+        android:paddingRight="@dimen/user_text_padding" />
+</LinearLayout>
