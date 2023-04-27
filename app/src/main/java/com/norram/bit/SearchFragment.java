@@ -1,6 +1,7 @@
 package com.norram.bit;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
@@ -35,6 +36,7 @@ import android.widget.ScrollView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.norram.bit.databinding.FragmentSearchBinding;
 import com.squareup.picasso.Picasso;
 import com.stfalcon.imageviewer.StfalconImageViewer;
@@ -192,7 +194,26 @@ public class SearchFragment extends Fragment {
             if(sufIdx != -1) username = username.substring(0, sufIdx);
         }
 
-        String requestUrl = String.format(requestUrlFormatter, username, afterToken);
+        String requestUrl;
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if(accessToken != null && !accessToken.isExpired()) {
+            SharedPreferences sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
+            requestUrl = String.format(requestUrlFormatter,
+                    sharedPref.getString(getString(R.string.iba_id), ""),
+                    username,
+                    afterToken,
+                    accessToken.getToken()
+            );
+        } else {
+            CommonData data = CommonData.getInstance();
+            requestUrl = String.format(requestUrlFormatter,
+                    data.BUSINESS_ACCOUNT_ID,
+                    username,
+                    afterToken,
+                    data.ACCESS_TOKEN
+            );
+        }
+
         try {
             URL url = new URL(requestUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

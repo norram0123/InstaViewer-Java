@@ -2,6 +2,7 @@ package com.norram.bit;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -23,6 +24,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.AccessToken;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -136,7 +138,28 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         } else {
             return;
         }
-        String requestUrl = String.format(CommonData.requestUrlFormatter(), username, "");
+
+        String requestUrl;
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        String requestUrlFormatter = CommonData.requestUrlFormatter();
+        if(accessToken != null && !accessToken.isExpired()) {
+            SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+            requestUrl = String.format(requestUrlFormatter,
+                    sharedPref.getString(activity.getString(R.string.iba_id), ""),
+                    username,
+                    "",
+                    accessToken.getToken()
+            );
+        } else {
+            CommonData data = CommonData.getInstance();
+            requestUrl = String.format(requestUrlFormatter,
+                    data.BUSINESS_ACCOUNT_ID,
+                    username,
+                    "",
+                    data.ACCESS_TOKEN
+            );
+        }
+
         try {
             URL url = new URL(requestUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

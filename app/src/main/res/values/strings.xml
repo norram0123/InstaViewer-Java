@@ -15,7 +15,16 @@
 
     <string name="error0">You are not connected to the Internet.</string>
     <string name="error1">The user name does not exist or not belong to a pro account.</string>
+    <string name="error2">Login canceled.</string>
+    <string name="error3">Error occurred.</string>
     <string name="dialog_delete_history">Are you sure you want to delete the history?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+
+    <string name="iba_id">IBA_ID</string>
+
+    <!--TODO(B) : enter your facebook information-->
+    <string name="facebook_app_id">[FACEBOOK APP ID]</string>
+    <string name="fb_login_protocol_scheme">[FB LOGIN PROTOCOL SCHEME]</string>
+    <string name="facebook_client_token">[FACEBOOK CLIENT TOKEN]</string>
 </resources>
