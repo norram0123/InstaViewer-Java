@@ -13,20 +13,40 @@ Instagram has a function called "album posting", which allows you to combine mul
 
 ## 🌐 How to use
 
-This app uses Instagram Graph API. Therefore, you need to get facebook, instagram account, business account id and access token for the app (<a href="https://blog.dtn.jp/2022/02/02/instagram-graph-api-ver12/">this link</a> can help you to get them). In addition, you need to change some code in CommonData.java if you build the program.
+This app uses Instagram Graph API. Therefore, you need to get facebook, instagram account, business account id and access token for the app (<a href="https://blog.dtn.jp/2022/02/02/instagram-graph-api-ver12/">this link</a> can help you to get them).
+Please select Plan A or B.
+
+Plan A(Recommend):
+
+You can build the program to change some code in CommonData.java.
 
 ```java
 public class CommonData {
     // ...
-    static public String requestUrlFormatter() {
-        String BUSINESS_ACCOUNT_ID = "[YOUR BUSINESS ACCOUNT ID]";
-        String MEDIA_FIELDS = "profile_picture_url,name,media%s{media_type,media_url,permalink,children{media_type,media_url}}";
-        String ACCESS_TOKEN = "[APP ACCESS TOKEN]";
-        return "https://graph.facebook.com/v15.0/" + BUSINESS_ACCOUNT_ID + "?fields=business_discovery.username(%s){" + MEDIA_FIELDS + "}&access_token=" + ACCESS_TOKEN;
-    }
+    
+    String BUSINESS_ACCOUNT_ID = "[YOUR BUSINESS ACCOUNT ID]"; // TODO(A) : change your business account id
+    String ACCESS_TOKEN = "[APP ACCESS TOKEN]"; // TODO(A) : change your app access token
+    
+    // ...
 }
 ```
 <sub>↑ Change [YOUR BUSINESS ACCOUNT ID] and [APP ACCESS TOKEN]</sub>
+
+Plan B:
+
+You can create new app by registering "Facebook for Developers" .
+Please refer to <a href="https://developers.facebook.com/docs/facebook-login/android/">this link</a> and change some code in strings.xml.
+
+```xml
+<resources>
+    // ...
+    
+    <!--TODO(B) : enter your facebook information-->
+    <string name="facebook_app_id">[FACEBOOK APP ID]</string>
+    <string name="fb_login_protocol_scheme">[FB LOGIN PROTOCOL SCHEME]</string>
+    <string name="facebook_client_token">[FACEBOOK CLIENT TOKEN]</string>
+</resources>
+```
 
 
 ## :seedling: Kotlin ver.
@@ -44,7 +64,7 @@ These code is written in Java (except data class). In case you are interested in
 
 ## License
 ```
-Copyright 2022 norram
+Copyright 202 norram
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
